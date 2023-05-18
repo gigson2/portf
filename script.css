@@ -1,50 +1,274 @@
-@import url('https://fonts.cdnfonts.com/css/poppins');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    scroll-behavior: smooth;
-    font-family: 'Poppins', sans-serif;
+@import url("https://fonts.cdnfonts.com/css/poppins");
+/*var(--name, value) function is used to
+   insert the value of a CSS variable*/
+
+/* The term 'webkit' is used in the CSS syntax for rendering content in Safari and Chrome browsers. 
+Webkit code may need to be added in CSS to ensure it renders correctly on Chrome and Safari due to the lack of cross-compatibility. */
+
+/* The overflow-x property specifies whether to clip the content, add a scroll bar, or display overflow content of a block-level 
+element, when it overflows at the left and right edges.
+Tip: Use the overflow-y property to determine clipping at the top and bottom edges. */
+
+/* flex tells browsers to display the selected HTML element as a block-level flexible box model.
+In other words, setting an element's display property's value to flex turns the box model into a block-level flexbox. */
+
+/* inline-flex tells browsers to display the selected HTML element as an inline-level flexible box model.
+In other words, setting an element's display property's value to inline-flex turns the box model into an inline-level flexbox. */
+
+/* The ::before and ::after pseudo-elements in CSS allows you to insert content onto a page without it needing to be in the HTML. 
+While the end result is not actually in the DOM, it appears on the page as if it is, and would essentially be like this: 
+The only reasons to use one over the other are:
+You want the generated content to come before the element content, positionally.
+The ::after content is also “after” in source-order, so it will position on top of ::before if stacked on top of each other naturally.*/
+
+/* The :nth-child selector allows you to select one or more elements based on their source order, according to a formula. */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
 }
 
-:root{
-    --bg-color: #0c1950;
-    --second-bg-color: #022c31;
-    --text-color: #ffffff;
-    --main-color: #bbdf8d;
+:root {
+  --bg-color: #111314;
+  --second-bg-color: #0f0f0fa9;
+  --text-color: #ffffff;
+  --main-color: #67c2ff;
 }
 
-html{
-    font-size: 62.5%;
-    overflow-x: hidden;
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
 }
-body{
-    background: var(--bg-color);
-    color: var(--text-color);
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
 }
-.header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 2rem 9%;
-    background: rgb(205, 238, 128);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 100;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 9%; /*rem means root element font size */
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
 }
-.logo{
-    font-size: 2.5rem;
-    color: var(--text-color);
-    font-weight: 600;
+.logo {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  font-weight: 600;
 }
-.navbar a{
- font-size: 1.7rem;
- font-weight: 500;
- margin-left: 3.5rem;
- color: var(--text-color);
+.navbar a {
+  color: var(--text-color);
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-left: 3.5rem;
+  transition: 0.35s;
+}
+.navbar a:hover,
+.navbar a.active {
+  color: var(--main-color);
+}
+
+#menu-icon {
+  font-size: 3.6rem;
+  color: var(--text-color);
+  cursor: pointer;
+  display: none;
+}
+section {
+  min-height: 100vh;
+  padding: 10rem 9% 2rem;
+}
+.home {
+  display: flex;
+  align-items: center;
+  padding: 0 9%;
+  background: url("/images/b61.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.home-content {
+  max-width: 60rem;
+}
+.home-content h1 {
+  font-size: 4.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.home-content .text-animate {
+  position: relative;
+  width: 32.8rem;
+}
+.home-content .text-animate h3 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: transparent;
+  -webkit-text-stroke: 0.7px var(--main-color);
+}
+.home-content p {
+  font-size: 1.4rem;
+  margin: 2rem 0 4rem;
+  line-height: 2.5rem;
+}
+.btn-box {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 34.5rem;
+  height: 5rem;
+}
+.btn-box .btn {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 100%;
+  background: var(--main-color);
+  border: 0.2rem solid var(--main-color);
+  border-radius: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  color: var(--bg-color);
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.7s;
+}
+.btn-box .btn:hover {
+  color: var(--main-color);
+}
+.btn-box .btn:nth-child(2) {
+  background: transparent;
+  color: var(--main-color);
+}
+.btn-box .btn:nth-child(2):hover {
+  color: var(--bg-color);
+}
+.btn-box .btn:nth-child(2)::before {
+  background: var(--main-color);
+}
+
+.btn-box .btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--bg-color);
+  z-index: -1;
+  transition: 0.75s;
+}
+.btn-box .btn:hover::before {
+  width: 100%;
+}
+.home-sci {
+  position: absolute;
+  bottom: 4rem;
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+}
+.home-sci a {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  background: transparent;
+  border: 0.2rem solid var(--main-color);
+  border-radius: 50%;
+  font-size: 15px;
+  color: var(--main-color);
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.75s;
+}
+.home-sci a:hover {
+  color: var(--bg-color);
+}
+.home-sci a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: var(--main-color);
+  z-index: -1;
+  transition: 0.75s;
+}
+.home-sci a:hover::before {
+  width: 100%;
+}
+.home-imgHover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: transparent;
+  transition: 3s;
+}
+.home-imgHover:hover {
+  background: rgba(0, 0, 0, 0.288);
+  opacity: 0.8;
+}
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  background: var(--second-bg-color);
+  padding-bottom: 6rem;
+}
+.heading {
+  font-size: 5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+span {
+  color: var(--main-color);
+}
+.about-img {
+  position: relative;
+  width: 25rem;
+  height: 25rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-img img {
+  width: 90%;
+  border-radius: 50%;
+  border: 0.2rem solid var(--main-color);
+}
+.about-img .circle-spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-top: 0.2rem solid var(--second-bg-color);
+  border-bottom: 0.2rem solid var(--second-bg-color);
+  border-left: 0.2rem solid var(--main-color);
+  border-right: 0.2rem solid var(--main-color);
+}
+.about-content {
+  text-align: center;
 }
